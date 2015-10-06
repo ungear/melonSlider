@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>mesonSlider autoslide</title>
+    <script src="../js/melonSlider.js"></script>
+  </head>
+  <body>
+    <p>mesonSlider autoslide</p>
+    <ul>
+      <li>Use options <i>autoSlide</i></li>
+      <li>Use options <i>autoSlideDelay</i></li>
+      <li>Use method <i>startAutoSlide</i></li>
+      <li>Use method <i>stopAutoSlide</i></li>
+    </ul>
+    <div id='container-id' style="width:600px;height:300px;overflow:hidden;position:relative;">
+      <img src="../images/1.png"/>
+      <img src="../images/2.png"/>
+      <img src="../images/3.png"/>
+      <img src="../images/4.png"/>
+    </div>
+    <button type='button' id='start-auto-slide'>Start</button>
+    <button type='button' id='stop-auto-slide'>Stop</button>
+    <script>
+      window.addEventListener('load',function(){
+        var options = {
+          containerId:'container-id',
+          autoSlide:true,
+          speed: 800,
+          autoSlideDelay: 500,
+        };
+        var slider = new MelonSlider(options);
+        
+        document.getElementById('start-auto-slide').onclick = slider.startAutoSlide; 
+        document.getElementById('stop-auto-slide').onclick = slider.stopAutoSlide; 
+      });
+    </script>
+  </body>
+</html>

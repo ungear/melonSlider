@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>mesonSlider border types: curve</title>
+    <script src="../js/melonSlider.js"></script>
+  </head>
+  <body>
+    <p>mesonSlider border types: curve</p>
+    <ul>
+      <li>Use options <i>cutMode</i></li>
+      <li>Use options <i>curvesPiecesNumber:3</i></li>
+      <li>Use options <i>curveVertexMinDistance:</i></li>
+      <li>Use options <i>curveVertexMaxDistance:</i></li>
+    </ul>
+    <div id='container-id-1' style="width:600px;height:300px;overflow:hidden;position:relative;">
+      <img src="../images/1.png"/>
+      <img src="../images/2.png"/>
+      <img src="../images/3.png"/>
+      <img src="../images/4.png"/>
+    </div>
+    <button type='button' id='start-auto-slide-1'>Start</button>
+    <button type='button' id='stop-auto-slide-1'>Stop</button>
+    <br/>
+    <div id='container-id-2' style="width:600px;height:300px;overflow:hidden;position:relative;">
+      <img src="../images/1.png"/>
+      <img src="../images/2.png"/>
+      <img src="../images/3.png"/>
+      <img src="../images/4.png"/>
+    </div>
+    <button type='button' id='start-auto-slide-2'>Start</button>
+    <button type='button' id='stop-auto-slide-2'>Stop</button>
+    <script>
+      window.addEventListener('load',function(){
+        var options1 = {
+          containerId:'container-id-1',
+          autoSlide:true,
+          cutMode:'curves',
+          curvesPiecesNumber:3,
+          curveVertexMinDistance: 20,
+          curveVertexMaxDistance: 100,
+        };
+        var slider1 = new MelonSlider(options1);
+        document.getElementById('start-auto-slide-1').onclick = slider1.startAutoSlide; 
+        document.getElementById('stop-auto-slide-1').onclick = slider1.stopAutoSlide; 
+        
+        var options2 = {
+          containerId:'container-id-2',
+          autoSlide:true,
+          cutMode:'curves',
+          curvesPiecesNumber:8,
+          curveVertexMinDistance: 100,
+          curveVertexMaxDistance: 300,
+        };
+        var slider2 = new MelonSlider(options2);
+        document.getElementById('start-auto-slide-2').onclick = slider2.startAutoSlide; 
+        document.getElementById('stop-auto-slide-2').onclick = slider2.stopAutoSlide; 
+      });
+    </script>
+  </body>
+</html>

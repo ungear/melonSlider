@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>mesonSlider border types: user cut</title>
+    <script src="../js/melonSlider.js"></script>
+  </head>
+  <body>
+    <p>mesonSlider border types: user cut</p>
+    <ul>
+      <li>Use options <i>cutMode</i></li>
+      <li>Use options <i>user cut</i></li>
+    </ul>
+    <div id='container-id-1' style="width:600px;height:300px;overflow:hidden;position:relative;">
+      <img src="../images/1.png"/>
+      <img src="../images/2.png"/>
+      <img src="../images/3.png"/>
+      <img src="../images/4.png"/>
+    </div>
+    <button type='button' id='start-auto-slide-1'>Start</button>
+    <button type='button' id='stop-auto-slide-1'>Stop</button>
+    <br/>
+    <script>
+      window.addEventListener('load',function(){
+        var options1 = {
+          containerId:'container-id-1',
+          autoSlide:true,
+          speed:300,
+          cutMode:'userCut',
+          userCut: { path:"L200 0 L300 100 C 400 100 400 200 300 200 L200 300", minX: 200, maxX:400 }
+        };
+        var slider1 = new MelonSlider(options1);
+        document.getElementById('start-auto-slide-1').onclick = slider1.startAutoSlide; 
+        document.getElementById('stop-auto-slide-1').onclick = slider1.stopAutoSlide; 
+      });
+    </script>
+  </body>
+</html>
