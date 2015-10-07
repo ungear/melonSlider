@@ -408,23 +408,6 @@
       rAFpolufillLastTime = currTime + timeToCall;
       return id;
     }
-//    var timer = setInterval(animate, 1);
-//    function animate(){
-//      var leftChunkLeft = parseInt(slider.parts.leftChunkContainer.style.left);
-//      var rightChunkLeft = parseInt(slider.parts.rightChunkContainer.style.left);
-//      
-//      var leftChunkIsVisible = -leftChunkLeft < leftChunkVisualWidth;
-//      var rightChunkIsVisible = rightChunkLeft < rightChunkVisualWidth;
-//      
-//      if(leftChunkIsVisible && rightChunkIsVisible){
-//        slider.parts.leftChunkContainer.style.left = leftChunkLeft - 1;
-//        slider.parts.rightChunkContainer.style.left = rightChunkLeft + 1;
-//      }
-//      else{
-//        clearInterval(timer);
-//        slider.afterEndAnimation();
-//      }
-//    }
   };
   
   Slider.prototype.startCssAnimation = function(){
