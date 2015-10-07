@@ -59,9 +59,22 @@ The simple slider that changes images by dividing them in two parts.
 | curveVertexMinDistance | number | 100 | The minimum distance between the middle of the image and the vertex of the curve |
 | curveVertexMaxDistance | number | 150 | The maximum distance between the middle of the image and the vertex of the curve |
 | userCut | object |  |  |
-| autoSlide | boolean | false | Change slides automatically or nor |
+| autoSlide | boolean | false | Change slides automatically or not |
 | autoSlideDelay | number | 1000 | Delay time for autoSlide in milliseconds |
 | animationType | string | requestAnimationFrame |  Possible values: requestAnimationFrame, cssTransition  |
 | cssAnimationTimingFunction | string | linear |  |
 
 ##Methods
+
+
+***
+TODO:
+1. options - userCut
+2. options - animationType
+3. options - cssAnimationTimingFunction
+4. cutMode - brokenLine
+5. cutMode - curves
+6. cutMode - userCut
+7. animationType
+8. cssAnimationTimingFunction
+9. methods
