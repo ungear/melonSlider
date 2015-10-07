@@ -70,11 +70,19 @@ The simple slider that changes images by dividing them in two parts.
 ***
 TODO:
 1. options - userCut
+
 2. options - animationType
+
 3. options - cssAnimationTimingFunction
+
 4. cutMode - brokenLine
+
 5. cutMode - curves
+
 6. cutMode - userCut
+
 7. animationType
+
 8. cssAnimationTimingFunction
+
 9. methods
