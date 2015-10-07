@@ -12,7 +12,7 @@ The simple slider that changes images by dividing them in two parts.
   ```html
   <script src="/js/melonSlider.js"></script>
   ```
-2. Create the div tag that will contain your images. Set width and height attributes in accordance with the size of your images. Also set overflow attribute in hidden and position attribute in relative. Set id for this div. Write img tags with your images inside this div.
+2. Create a div element that will contain your images. Set `width` and `height` attributes in accordance with the size of your images. Also set `overflow:hidden` and `position:relative`. Set id for this div. Write img tags with your images inside this div.
 
   ```html
   <div id='containerId' style="width:600px;height:300px;overflow:hidden;position:relative;">
@@ -43,3 +43,25 @@ The simple slider that changes images by dividing them in two parts.
     var slider = new MelonSlider(options);
   });
   ```
+
+##Options
+| name | type | default | description |
+|------------------------|:-------:|:----------:|--------------------------------------------------------------------------------------------|
+| containerId | string |  | An identifier of `div` contained images |
+| rightButtonId | string |  | An identifier of element. A mouse click on this element will cause change slides forward |
+| leftButtonId | string |  | An identifier of element. A mouse click on this element will cause change slides backward |
+| speed | number | 1000 | Movement speed of parts of an image in pixels per second |
+| cutMode | string | brokenLine | Set the type of a border between image parts. Possible values: brokenLine, curves, userCut |
+| brokenLinePointNumber | number | 4 | Number of points on the broken line |
+| brokenLineMinDistance | number | 50 | The minimum distance between the middle of the image and the broken line point |
+| brokenLineMaxDistance | number | 100 | The maximum distance between the middle of the image and the broken line point |
+| curvesPiecesNumber | number | 3 | Number of parts of the curve. |
+| curveVertexMinDistance | number | 100 | The minimum distance between the middle of the image and the vertex of the curve |
+| curveVertexMaxDistance | number | 150 | The maximum distance between the middle of the image and the vertex of the curve |
+| userCut | object |  |  |
+| autoSlide | boolean | false | Change slides automatically or nor |
+| autoSlideDelay | number | 1000 | Delay time for autoSlide in milliseconds |
+| animationType | string | requestAnimationFrame |  Possible values: requestAnimationFrame, cssTransition  |
+| cssAnimationTimingFunction | string | linear |  |
+
+##Methods
