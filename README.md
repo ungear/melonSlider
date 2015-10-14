@@ -1,5 +1,5 @@
 # melonSlider
-The simple slider that changes images by dividing them in two parts. 
+A simple slider that changes images by dividing them in two parts. 
 
 ##The main features:
 * Uses svg to divide the image in two parts.
@@ -22,7 +22,7 @@ The simple slider that changes images by dividing them in two parts.
     <img src="../images/4.png"/>
   </div>
   ```
-3. Iinitialize the slider with options.
+3. Initialize the slider with options.
   
   ```javascript
   $(document).ready(function(){
