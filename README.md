@@ -58,22 +58,17 @@ A simple slider that changes images by dividing them in two parts.
 | curvesPiecesNumber | number | 3 | Number of parts of the curve. |
 | curveVertexMinDistance | number | 100 | The minimum distance between the middle of the image and the vertex of the curve |
 | curveVertexMaxDistance | number | 150 | The maximum distance between the middle of the image and the vertex of the curve |
-| userCut | object |  |  |
+| userCut | object |  |An object with fields `path`, `minX`, `maxX`. It is required, if you set `cutMode: userCut`  |
 | autoSlide | boolean | false | Change slides automatically or not |
 | autoSlideDelay | number | 1000 | Delay time for autoSlide in milliseconds |
-| animationType | string | requestAnimationFrame |  Possible values: requestAnimationFrame, cssTransition  |
-| cssAnimationTimingFunction | string | linear |  |
+| animationType | string | requestAnimationFrame | There are two ways to animate movement of parts of an image: requestAnimationFrame and cssTransition  |
+| cssAnimationTimingFunction | string | linear | If you set `animationType:cssTransition` you may specify `transition-timing-function` property. See [here](http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp 'w3c')|
 
 ##Methods
 
 
 ***
 TODO:
-1. options - userCut
-
-2. options - animationType
-
-3. options - cssAnimationTimingFunction
 
 4. cutMode - brokenLine
 
