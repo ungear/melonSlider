@@ -22,7 +22,7 @@ A simple slider that changes images by dividing them in two parts.
     <img src="../images/4.png"/>
   </div>
   ```
-3. Initialize the slider with options.
+3. Initialize a slider with options.
   
   ```javascript
   $(document).ready(function(){
