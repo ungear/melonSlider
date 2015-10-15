@@ -43,6 +43,10 @@
   //│╚══════════════════╝  ╚══════════════════╝ │
   //└──────────────────────────────────────────┘
   
+  /******
+   * Horizontal chunk is <svg> with <image> inside.
+   * An instance controls <image> and the cutting of its.
+   */
   function HorizontalChunk(width, height, baseContainerId, isLeft){
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width', width);
@@ -98,6 +102,10 @@
     this.image.removeAttributeNS('http://www.w3.org/1999/xlink','href');
   };
 
+  /******
+   * ChunkContainer is <div> with HorizontalChunk inside.
+   * We animate the movement of this <div> 
+   */
   function ChunkContainer(width,height){
     var chunkContainer = document.createElement('div');
     chunkContainer.style.top = 0;
@@ -143,6 +151,9 @@
     }
   };
   
+  /******
+   * Creates instances of necessary entities
+   */
   Slider.prototype.initialize = function(){
     var parts = {};
     parts.sliderContainer = document.getElementById(this.options.containerId);
