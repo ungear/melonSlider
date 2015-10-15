@@ -32,6 +32,17 @@
   
   var SLIDER_NAME = 'melon-slider';
   
+  // An ugly scheme to explain parts of slider. 
+  //┌───────────────── [sliderContainer] ─────────────┐
+  //│╔══ [ leftChunkContainer ] ═╗  ╔══ [ rightChunkContainer ] ═╗ |
+  //│║┌── [ leftChunk ] -────┐║  ║┌── [ rightChunk ]-────┐ ║ │
+  //│║│                          │║  ║│                          │║ │
+  //│║│                          │║  ║│                          │║ │
+  //│║│                          │║  ║│                          │║ │
+  //│║└────────────────┘║  ║└────────────────┘║ │
+  //│╚══════════════════╝  ╚══════════════════╝ │
+  //└──────────────────────────────────────────┘
+  
   function HorizontalChunk(width, height, baseContainerId, isLeft){
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width', width);
@@ -134,14 +145,14 @@
   
   Slider.prototype.initialize = function(){
     var parts = {};
-    parts.container = document.getElementById(this.options.containerId);
+    parts.sliderContainer = document.getElementById(this.options.containerId);
     
     this.images = [];
-    var images = parts.container.getElementsByTagName('img');
+    var images = parts.sliderContainer.getElementsByTagName('img');
     for (var i = 0; i < images.length; i++ ){
       var image = images[i];
       if(!isImageLoadedSuccessfully(image)){
-        parts.container.removeChild(image);
+        parts.sliderContainer.removeChild(image);
         i--;
       }
       else{
@@ -151,16 +162,16 @@
       }
     }
     
-    this.baseWidth = parts.container.offsetWidth;
-    this.baseHeight = parts.container.offsetHeight;
+    this.baseWidth = parts.sliderContainer.offsetWidth;
+    this.baseHeight = parts.sliderContainer.offsetHeight;
 
     parts.leftChunkContainer = new ChunkContainer(this.baseWidth,this.baseHeight);
-    parts.container.appendChild(parts.leftChunkContainer.el);
+    parts.sliderContainer.appendChild(parts.leftChunkContainer.el);
     parts.leftChunk = new HorizontalChunk(this.baseWidth,this.baseHeight, this.options.containerId, true);
     parts.leftChunkContainer.el.appendChild(parts.leftChunk.svg);
    
     parts.rightChunkContainer = new ChunkContainer(this.baseWidth,this.baseHeight);
-    parts.container.appendChild(parts.rightChunkContainer.el);
+    parts.sliderContainer.appendChild(parts.rightChunkContainer.el);
     parts.rightChunk = new HorizontalChunk(this.baseWidth,this.baseHeight,this.options.containerId);
     parts.rightChunkContainer.el.appendChild(parts.rightChunk.svg);
     
@@ -495,7 +506,7 @@
   function Facade(options){
     var slider = new Slider (options);
     return {
-      element: slider.parts.container,
+      element: slider.parts.sliderContainer,
       startAutoSlide: slider.startAutoSlide.bind(slider),
       stopAutoSlide: slider.stopAutoSlide.bind(slider),
       showNextImage: slider.showNextImage.bind(slider),
