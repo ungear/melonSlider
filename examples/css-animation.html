@@ -1,13 +1,17 @@
 <html>
   <head>
-    <title>melonSlider: animation types</title>
+    <title>melonSlider CSS animation: cssAnimationTimingFunction</title>
     <script src="../js/melonSlider.js"></script>
   </head>
   <body>
-    <p>melonSlider: animation types</p>
+    <p>melonSlider CSS animation: cssAnimationTimingFunction</p>
     <ul>
-      <li>Use options <i>animationType</i></li>
-      <li>Use options <i>cssAnimationTimingFunction</i></li>
+      <li>Set option <i>animationType:'cssTransition'</i></li>
+      <li>
+        Specify value for CSS property <i>transition-timing-function</i> in option <i>cssAnimationTimingFunction</i><br/>
+        Possible values: ease|ease-in|ease-out|ease-in-out|linear|step-start|step-end|steps|cubic-bezier<br/>
+        See more information about <i>transition-timing-function</i> <a href='http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp'>there</a>
+      </li>
     </ul>
     <div id='container-id-1' style="width:600px;height:300px;overflow:hidden;position:relative;">
       <img src="../images/1.png"/>
@@ -31,7 +35,9 @@
         var options1 = {
           containerId:'container-id-1',
           autoSlide:true,
-          animationType:'requestAnimationFrame',
+          animationType:'cssTransition',
+          speed:300,
+          cssAnimationTimingFunction: 'cubic-bezier(0,0,0,1)'
         };
         var slider1 = new MelonSlider(options1);
         document.getElementById('start-auto-slide-1').onclick = slider1.startAutoSlide; 
@@ -40,9 +46,9 @@
         var options2 = {
           containerId:'container-id-2',
           autoSlide:true,
-          speed:500,
           animationType:'cssTransition',
-          cssAnimationTimingFunction: 'ease-out'
+          speed:500,
+          cssAnimationTimingFunction: 'ease-in-out'
         };
         var slider2 = new MelonSlider(options2);
         document.getElementById('start-auto-slide-2').onclick = slider2.startAutoSlide; 

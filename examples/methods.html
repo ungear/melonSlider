@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>melonSlider: methods</title>
+    <script src="../js/melonSlider.js"></script>
+  </head>
+  <body>
+    <p>An instance of melonSlider provides to you following methods:</p>
+    <ul>
+      <li><i>startAutoSlide</i> / <i>stopAutoSlide</i></li>
+      <li><i>showNextImage</i> / <i>showPreviousImage</i> - to change images programmatically</li>
+    </ul>
+    <div id='container-id-1' style="width:600px;height:300px;overflow:hidden;position:relative;">
+      <img src="../images/1.png"/>
+      <img src="../images/2.png"/>
+      <img src="../images/3.png"/>
+      <img src="../images/4.png"/>
+    </div>
+    <button type='button' id='my-button-1'>Call a showNextImage() method </button>
+    <button type='button' id='my-button-2'>Call a showPreviousImage() method</button>
+    <br/>
+    <script>
+      window.addEventListener('load',function(){
+        var options = {
+          containerId:'container-id-1',
+          speed:300,
+        };
+        var slider = new MelonSlider(options);
+        document.getElementById('my-button-1').onclick = function(){
+          slider.showNextImage();
+        }; 
+        document.getElementById('my-button-2').onclick = function(){
+          slider.showPreviousImage();
+        }; 
+      });
+    </script>
+  </body>
+</html>
