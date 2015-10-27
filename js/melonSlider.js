@@ -42,7 +42,7 @@
   
   /******
    * Horizontal chunk is <svg> with <image> inside.
-   * An instance controls <image> and the cutting of its.
+   * An instance controls <image> and the cutting.
    */
   function HorizontalChunk(width, height, baseContainerId, isLeft){
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -86,8 +86,8 @@
   
   HorizontalChunk.prototype.cropByPath = function(path){
     var pathD = this.isLeft
-      ? 'M0 0 ' + path + " L0 " + this.height +" L0 0 Z"
-      : 'M' + this.width + ' 0 ' + path + " L" + this.width + " " + this.height + " L" + this.width + " 0 Z";
+      ? 'M0,0 ' + path + " L0," + this.height +" L0,0 Z"
+      : 'M' + this.width + ',0 ' + path + " L" + this.width + "," + this.height + " L" + this.width + ",0 Z";
     this.path.setAttribute( 'd', pathD);
     var clipPathUrl = 'url(#' + this.clipPathId +')';
     this.image.setAttribute('clip-path',clipPathUrl);
