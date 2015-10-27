@@ -18,12 +18,10 @@
     speed: 1000,                      //  px/sec
     cutMode: CUT_MODES.brokenLine,
     segmentsNumber: 4,
-    brokenLineMinDistance: 50,
-    brokenLineMaxDistance: 100,
+    minSegmentWidth: 50,
+    maxSegmentWidth: 100,
     autoSlide: false,
     autoSlideDelay: 1000,
-    curveVertexMinDistance: 100,
-    curveVertexMaxDistance: 150,
     userCut:'',
     animationType: ANIMATION_TYPES.requestAnimationFrame,
     cssAnimationTimingFunction: 'linear'    //ease|ease-in|ease-out|ease-in-out|linear|step-start|step-end|steps|cubic-bezier
@@ -244,12 +242,12 @@
     var pointSideLeft = getRandomBool();
     for(var j = 0; j< yCoordinates.length; j++){
       var randLeftBorder = pointSideLeft
-        ? middleX - this.options.brokenLineMaxDistance
-        : middleX + this.options.brokenLineMinDistance;
+        ? middleX - this.options.maxSegmentWidth
+        : middleX + this.options.minSegmentWidth;
       
       var randRightBorder = pointSideLeft
-        ? middleX - this.options.brokenLineMinDistance
-        : middleX + this.options.brokenLineMaxDistance;
+        ? middleX - this.options.minSegmentWidth
+        : middleX + this.options.maxSegmentWidth;
       
       var randX = getRandomInt(randLeftBorder, randRightBorder);
       xCoordinates.push(randX);
@@ -275,8 +273,8 @@
   
   Slider.prototype.generateBezierCurveCut = function(){
     var middleX = parseInt(this.baseWidth/2);
-    var vertexMinDistance = this.options.curveVertexMinDistance;
-    var vertexMaxDistance = this.options.curveVertexMaxDistance;
+    var vertexMinDistance = this.options.minSegmentWidth;
+    var vertexMaxDistance = this.options.maxSegmentWidth;
     var minX = middleX - vertexMaxDistance;
     var maxX = middleX + vertexMaxDistance;
     var curveLeft = getRandomBool();

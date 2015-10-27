@@ -8,8 +8,8 @@
     <ul>
       <li>Use options <i>cutMode</i></li>
       <li>Use options <i>segmentsNumber:</i></li>
-      <li>Use options <i>brokenLineMinDistance</i></li>
-      <li>Use options <i>brokenLineMaxDistance</i></li>
+      <li>Use options <i>minSegmentWidth</i></li>
+      <li>Use options <i>maxSegmentWidth</i></li>
     </ul>
     <div id='container-id-1' style="width:600px;height:300px;overflow:hidden;position:relative;">
       <img src="../images/1.png"/>
@@ -34,8 +34,8 @@
           containerId:'container-id-1',
           autoSlide:true,
           cutMode:'brokenLine',
-          brokenLineMinDistance: 20,
-          brokenLineMaxDistance: 50,
+          minSegmentWidth: 20,
+          maxSegmentWidth: 50,
         };
         var slider1 = new MelonSlider(options1);
         document.getElementById('start-auto-slide-1').onclick = slider1.startAutoSlide; 
@@ -46,8 +46,8 @@
           autoSlide:true,
           cutMode:'brokenLine',
           segmentsNumber: 8,
-          brokenLineMinDistance: 100,
-          brokenLineMaxDistance: 300,
+          minSegmentWidth: 100,
+          maxSegmentWidth: 300,
         };
         var slider2 = new MelonSlider(options2);
         document.getElementById('start-auto-slide-2').onclick = slider2.startAutoSlide; 
