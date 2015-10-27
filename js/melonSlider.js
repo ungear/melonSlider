@@ -1,3 +1,4 @@
+"use strict";
 +function(){
   
   var ANIMATION_TYPES = {
@@ -128,11 +129,11 @@
   };
   
   function Slider(options){
-    if(!options.containerId){
-      printErrors("couldn't find container");
-    }
-    
     this.setOptions(options);
+    var errorsNumber = this.checkOptions();
+    this.isCorrect = !errorsNumber;
+    if(!this.isCorrect)
+      return;
     this.initialize();
     this.currentImageIndex = 0;
     this.calculateChunks();
@@ -147,6 +148,21 @@
         : DEFAULT_SLIDER_OPTIONS[f];
     }
   };
+  
+  Slider.prototype.checkOptions = function(){
+    var errorsNumber = 0;
+    if(!this.options.containerId){
+      printErrors("couldn't find container");
+      errorsNumber++;
+    }
+    
+    if(this.options.segmentsNumber < 1){
+      printErrors("wrong segmentsNumber");
+      errorsNumber++;
+    }
+    
+    return errorsNumber;
+  }
   
   /******
    * Creates instances of necessary entities
@@ -508,19 +524,24 @@
   }
     
   function printErrors(errorText){
-    console.log(errorText);
+    console.log("melonSlider error : " + errorText);
   }
   
-  function Facade(options){
+  function Facade(options){    
     var slider = new Slider (options);
-    return {
-      element: slider.parts.sliderContainer,
-      startAutoSlide: slider.startAutoSlide.bind(slider),
-      stopAutoSlide: slider.stopAutoSlide.bind(slider),
-      showNextImage: slider.showNextImage.bind(slider),
-      showPreviousImage: slider.showPreviousImage.bind(slider),
-    };
+    if(slider.isCorrect){
+      return {
+          element: slider.parts.sliderContainer,
+          startAutoSlide: slider.startAutoSlide.bind(slider),
+          stopAutoSlide: slider.stopAutoSlide.bind(slider),
+          showNextImage: slider.showNextImage.bind(slider),
+          showPreviousImage: slider.showPreviousImage.bind(slider)
+        };
+    }
+    else{
+      return null;
+    }
   }
   
-  MelonSlider=Facade;
+  window.MelonSlider=Facade;
 }();
