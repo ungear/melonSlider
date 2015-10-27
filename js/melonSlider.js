@@ -22,7 +22,6 @@
     brokenLineMaxDistance: 100,
     autoSlide: false,
     autoSlideDelay: 1000,
-    curvesPiecesNumber:3,
     curveVertexMinDistance: 100,
     curveVertexMaxDistance: 150,
     userCut:'',
@@ -281,33 +280,32 @@
     var minX = middleX - vertexMaxDistance;
     var maxX = middleX + vertexMaxDistance;
     var curveLeft = getRandomBool();
-    var normalHeight = this.baseHeight/this.options.curvesPiecesNumber;
+    var normalHeight = this.baseHeight/this.options.segmentsNumber;
     var heightRandBottom = normalHeight/2;
     var heightRandTop = normalHeight*1.5;
     var path = '';
     var middlePointsY = [];
     middlePointsY.push(0);
-    for(var i=1; i< this.options.curvesPiecesNumber; i++){
+    for(var i=1; i< this.options.segmentsNumber; i++){
       var y = generateCurveEndPoint(middlePointsY[i-1]);
       middlePointsY.push(y);
     }
     middlePointsY.push(this.baseHeight);
     
-    for(var j=0; j< this.options.curvesPiecesNumber; j++){
+    for(var j=0; j< this.options.segmentsNumber; j++){
       if(j==0){
         var firstPoints = generateFirstCurveExtraPoints(middlePointsY[1]);
-        path = 'L ' + middleX + ' ' + middlePointsY[0] + ' ' +
-              'C ' + firstPoints[0].x + ' ' + firstPoints[0].y + ' ' +
-              firstPoints[1].x + ' ' + firstPoints[1].y + ' ' + 
-              middleX + ' ' + middlePointsY[1];
+        path = 'L' + middleX + ',' + middlePointsY[0] + ' ' +
+              'C' + firstPoints[0].x + ',' + firstPoints[0].y + ' ' +
+              firstPoints[1].x + ',' + firstPoints[1].y + ' ' + 
+              middleX + ',' + middlePointsY[1];
       }else{
         var point = generateCurveExtraPoint(middlePointsY[j],middlePointsY[j+1]);
-        path += ' S ' + point.x + ' ' + point.y + ' ' + 
-                middleX + ' ' + middlePointsY[j+1];
+        path += ' S' + point.x + ',' + point.y + ' ' + 
+                middleX + ',' + middlePointsY[j+1];
       }
       curveLeft = !curveLeft;
     }
-    
     return{
       path: path,
       maxX: maxX,
