@@ -17,7 +17,7 @@
     rightButtonId:'',
     speed: 1000,                      //  px/sec
     cutMode: CUT_MODES.brokenLine,
-    brokenLinePointNumber: 4,
+    segmentsNumber: 4,
     brokenLineMinDistance: 50,
     brokenLineMaxDistance: 100,
     autoSlide: false,
@@ -231,10 +231,11 @@
     
     //generate y coordinates
     yCoordinates.push(0);
-    var normalHeight = this.baseHeight/this.options.brokenLinePointNumber;
-    for(var i = 1; i< this.options.brokenLinePointNumber -1;i++ ){
-      var topValue = i*normalHeight;
-      var bottomValue = (i+1)*normalHeight;
+    var normalHeight = this.baseHeight/this.options.segmentsNumber;
+    var delta = normalHeight*0.5;
+    for(var i = 1; i< this.options.segmentsNumber; i++ ){
+      var topValue = i*normalHeight - delta;
+      var bottomValue = i*normalHeight + delta;
       var randY = getRandomInt(topValue, bottomValue);
       yCoordinates.push(randY);
     }
@@ -242,7 +243,7 @@
     
     //generate x coordinates
     var pointSideLeft = getRandomBool();
-    for(var j = 0; j< this.options.brokenLinePointNumber; j++){
+    for(var j = 0; j< yCoordinates.length; j++){
       var randLeftBorder = pointSideLeft
         ? middleX - this.options.brokenLineMaxDistance
         : middleX + this.options.brokenLineMinDistance;
@@ -262,10 +263,10 @@
         minX = randX;
     }
     
-    for(var k = 0; k < this.options.brokenLinePointNumber; k++ ){
-      path += 'L' + xCoordinates[k] + ' ' + yCoordinates[k];
+    path += 'L';
+    for(var k = 0; k < yCoordinates.length; k++ ){
+      path += xCoordinates[k] + ',' + yCoordinates[k] + ' ';
     }
-    
     return {
       path: path,
       maxX: maxX,
