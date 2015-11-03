@@ -11,14 +11,14 @@
       <img src="../images/3.png"/>
       <img src="../images/4.png"/>
     </div>
-    <button type='button' id='leftButtonId'> < </button>
-    <button type='button' id='rightButtonId'> > </button>
+    <button type='button' id='prevButtonId'> < </button>
+    <button type='button' id='nextButtonId'> > </button>
     <script>
       window.addEventListener('load',function(){
         var options = {
           containerId:'containerId',
-          leftButtonId: 'leftButtonId',
-          rightButtonId: 'rightButtonId'
+          previousButtonId: 'prevButtonId',
+          nextButtonId: 'nextButtonId'
         };
         var s = new MelonSlider(options);
       });

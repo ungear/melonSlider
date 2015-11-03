@@ -14,8 +14,8 @@
   
   var DEFAULT_SLIDER_OPTIONS = {
     containerId:'',
-    leftButtonId:'',
-    rightButtonId:'',
+    previousButtonId:'',
+    nextButtonId:'',
     speed: 1000,                      //  px/sec
     cutMode: CUT_MODES.brokenLine,
     segmentsNumber: 4,
@@ -199,8 +199,8 @@
     parts.rightChunk = new HorizontalChunk(this.baseWidth,this.baseHeight,this.options.containerId);
     parts.rightChunkContainer.el.appendChild(parts.rightChunk.svg);
     
-    parts.leftButton = document.getElementById(this.options.leftButtonId);
-    parts.rightButton = document.getElementById(this.options.rightButtonId);
+    parts.previousButton = document.getElementById(this.options.previousButtonId);
+    parts.nextButton = document.getElementById(this.options.nextButtonId);
     
     this.parts = parts;
   };
@@ -354,13 +354,12 @@
   };
   
   Slider.prototype.setHandlers = function(){
-    var slider = this;
-    if(this.parts.rightButton){
-      this.parts.rightButton.addEventListener('click',this.showNextImage.bind(this));
+    if(this.parts.nextButton){
+      this.parts.nextButton.addEventListener('click',this.showNextImage.bind(this));
     }
     
-    if(this.parts.leftButton){
-      this.parts.leftButton.addEventListener('click',this.showPreviousImage.bind(this));
+    if(this.parts.previousButton){
+      this.parts.previousButton.addEventListener('click',this.showPreviousImage.bind(this));
     }
   };
   

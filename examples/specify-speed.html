@@ -14,8 +14,8 @@
       <img src="../images/3.png"/>
       <img src="../images/4.png"/>
     </div>
-    <button type='button' id='leftButtonId1'> < </button>
-    <button type='button' id='rightButtonId1'> > </button>
+    <button type='button' id='prevButtonId1'> < </button>
+    <button type='button' id='nextButtonId1'> > </button>
     <br/>
     <div id='containerId2' style="width:600px;height:300px;overflow:hidden;position:relative;">
       <img src="../images/1.png"/>
@@ -23,22 +23,22 @@
       <img src="../images/3.png"/>
       <img src="../images/4.png"/>
     </div>
-    <button type='button' id='leftButtonId2'> < </button>
-    <button type='button' id='rightButtonId2'> > </button>
+    <button type='button' id='prevButtonId2'> < </button>
+    <button type='button' id='nextButtonId2'> > </button>
     <script>
       window.addEventListener('load',function(){
         var options1 = {
           containerId:'containerId1',
-          leftButtonId: 'leftButtonId1',
-          rightButtonId: 'rightButtonId1',
+          previousButtonId: 'prevButtonId1',
+          nextButtonId: 'nextButtonId1',
           speed:100
         };
         new MelonSlider(options1);
         
         var options2 = {
           containerId:'containerId2',
-          leftButtonId: 'leftButtonId2',
-          rightButtonId: 'rightButtonId2',
+          previousButtonId: 'prevButtonId2',
+          nextButtonId: 'nextButtonId2',
           speed:3000
         };
         new MelonSlider(options2);
