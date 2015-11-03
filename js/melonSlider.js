@@ -1,6 +1,6 @@
 "use strict";
 +function(){
-  
+  var VERSION = 1.0;
   var ANIMATION_TYPES = {
     requestAnimationFrame: 'requestAnimationFrame', //works in ie9+  
     cssTransition: "cssTransition"                 //works in ie10+ 
