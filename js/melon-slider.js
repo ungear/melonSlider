@@ -31,19 +31,17 @@
   var SLIDER_NAME = 'melon-slider';
   
   // An ugly scheme to explain parts of slider. 
-  //┌───────────────── [sliderContainer] ─────────────┐
-  //│╔══ [ leftChunkContainer ] ═╗  ╔══ [ rightChunkContainer ] ═╗ |
-  //│║┌── [ leftChunk ] -────┐║  ║┌── [ rightChunk ]-────┐ ║ │
-  //│║│                          │║  ║│                          │║ │
-  //│║│                          │║  ║│                          │║ │
-  //│║│                          │║  ║│                          │║ │
-  //│║└────────────────┘║  ║└────────────────┘║ │
-  //│╚══════════════════╝  ╚══════════════════╝ │
-  //└──────────────────────────────────────────┘
+  //[=======================sliderContainer====================]
+  //[ {---leftChunkContainer---}   {---rightChunkContainer---} ]
+  //[ {   [---leftChunk---]    }   {   [---rightChunk---]    } ]
+  //[ {   [---------------]    }   {   [----------------]    } ]
+  //[ {------------------------}   {-------------------------} ]
+  //[==========================================================]
   
   /******
    * Horizontal chunk is <svg> with <image> inside.
    * An instance controls <image> and the cutting.
+   * Private. 
    */
   function HorizontalChunk(width, height, baseContainerId, isLeft){
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -85,6 +83,9 @@
     this.image.setAttributeNS('http://www.w3.org/1999/xlink','href',src);
   };
   
+  /******
+   * Sets path's "d" attribute. Applies clippath on image.
+   */
   HorizontalChunk.prototype.cropByPath = function(path){
     var pathD = this.isLeft
       ? 'M0,0 ' + path + " L0," + this.height +" L0,0 Z"
@@ -103,6 +104,7 @@
   /******
    * ChunkContainer is <div> with HorizontalChunk inside.
    * We animate the movement of this <div> 
+   * Private 
    */
   function ChunkContainer(width,height){
     var chunkContainer = document.createElement('div');
@@ -128,6 +130,9 @@
     this.el.style['transition-timing-delay'] = '0s';
   };
   
+  /******
+   * The main private constructor.
+   */
   function Slider(options){
     this.setOptions(options);
     var errorsNumber = this.checkOptions();
@@ -140,6 +145,9 @@
     this.setHandlers();
   }
   
+  /******
+   * Mixes user's options and default options.
+   */
   Slider.prototype.setOptions = function(userOptions){
     this.options = {};
     for(var f in DEFAULT_SLIDER_OPTIONS){
@@ -149,6 +157,9 @@
     }
   };
   
+   /******
+   * Validates options.
+   */
   Slider.prototype.checkOptions = function(){
     var errorsNumber = 0;
     if(!this.options.containerId){
@@ -165,8 +176,8 @@
   }
   
   /******
-   * Creates instances of necessary entities
-   */
+  * Creates instances of necessary entities
+  */
   Slider.prototype.initialize = function(){
     var parts = {};
     parts.sliderContainer = document.getElementById(this.options.containerId);
@@ -205,6 +216,9 @@
     this.parts = parts;
   };
   
+  /******
+  * Calculates and applies the cutting line. Prepares chunks to animation.
+  */
   Slider.prototype.calculateChunks = function(){
     this.chunksCalculationInProgress = true;
     this.parts.leftChunk.setImage(this.images[this.currentImageIndex].src);
@@ -374,7 +388,9 @@
     if(!this.animationInProcess && !this.chunksCalculationInProgress)
       this.changeSlide(false);
   };
-  
+  /******
+  * Starts animation.
+  */
   Slider.prototype.changeSlide = function (forward){
     this.animationInProcess = true;
     if (forward)
@@ -399,6 +415,9 @@
     }
   };
   
+  /******
+  * Implements animation using window.requestAnimationFrame (or its polyfill)
+  */
   Slider.prototype.startFrameAnimation = function(){
     var slider = this;
     var leftChunkVisualWidth = this.parts.leftChunk.visualImageWidth;
@@ -444,6 +463,9 @@
     }
   };
   
+  /******
+  * Implements CSS animation using 'transition' property.
+  */
   Slider.prototype.startCssAnimation = function(){
     var leftChunkVisualWidth = this.parts.leftChunk.visualImageWidth;
     var rightChunkVisualWidth = this.parts.rightChunk.visualImageWidth;
@@ -469,6 +491,9 @@
     },animationTime*1000);
   };
   
+  /******
+  * All calculations are completed.
+  */
   Slider.prototype.onReadyForNewAnimation = function(){
     var slider = this;
     if(this.options.autoSlide){
@@ -526,6 +551,9 @@
     console.log("melonSlider error : " + errorText);
   }
   
+  /******
+  * Public constructor.
+  */
   function Facade(options){    
     var slider = new Slider (options);
     if(slider.isCorrect){
