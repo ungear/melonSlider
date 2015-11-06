@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>melonSlider: animation types</title>
-    <script src="../js/melonSlider.js"></script>
+    <script src="../js/melon-slider.min.js"></script>
   </head>
   <body>
     <p>melonSlider: animation types</p>
@@ -40,9 +40,9 @@
         var options2 = {
           containerId:'container-id-2',
           autoSlide:true,
-          speed:500,
+          speed:300,
           animationType:'cssTransition',
-          cssAnimationTimingFunction: 'ease-out'
+          cssAnimationTimingFunction: 'ease'
         };
         var slider2 = new MelonSlider(options2);
         document.getElementById('start-auto-slide-2').onclick = slider2.startAutoSlide; 
