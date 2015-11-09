@@ -1,3 +1,12 @@
+/*!
+ * melonSlider JavaScript Library v1.0
+ * http://melon-slider.ungear.ru/
+ * https://github.com/ungear/melonSlider
+ * 
+ * (c) 2015 Mikhail Istomin http://ungear.ru
+ * Released  under the MIT License
+*/
+
 +function(){
   "use strict";
   var VERSION = '1.0';
